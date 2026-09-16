@@ -65,7 +65,7 @@ def pull_all_matches(game_name, tag_line, count=50, save_dir="data"):
         with open(file_path, "w") as f:
             json.dump(match_data, f)
 
-        time.sleep(1.2)
+        time.sleep(2.0)
 
     print(f"Done. Files saved in {save_dir}/")
 
