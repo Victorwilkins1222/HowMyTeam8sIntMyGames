@@ -1,12 +1,11 @@
+
+"""
 import numpy as np
 import pandas as pd
 
 
 def add_lane_opponent_comparison(df):
-    """
-    Adds cs_diff_vs_lane_opponent: how many more/fewer creeps a player
-    got compared to their direct lane opponent in that same match.
-    """
+
     merged = df.merge(df, on=["match_id", "role"], suffixes=("", "_opp"))
     merged = merged[merged["team_id"] != merged["team_id_opp"]]
     merged["cs_diff_vs_lane_opponent"] = merged["cs"] - merged["cs_opp"]
@@ -18,11 +17,7 @@ def add_lane_opponent_comparison(df):
 
 
 def calculate_scores(df, weights=None):
-    """
-    Adds a 'performance_score' column per player-game row: a weighted
-    z-score relative to the AVERAGE performance for that ROLE across
-    the whole dataset (not the player's own history).
-    """
+
     if weights is None:
         weights = {
             "kills": 1.0,
@@ -58,16 +53,7 @@ def calculate_scores(df, weights=None):
 
 
 def build_leaderboard(df, self_name=None):
-    """
-    Most players only appear in one game, so this returns every
-    individual game, sorted worst performance_score (most likely to
-    have thrown) to best.
 
-    If self_name is given, that player's rows are instead collapsed
-    into ONE averaged row (since you appear in every match and have
-    enough games for an average to be meaningful), while everyone
-    else stays as individual per-game rows.
-    """
     columns = [
         "match_id", "player_name", "role", "team_id", "win",
         "kills", "deaths", "assists", "vision_score",
@@ -102,13 +88,9 @@ def build_leaderboard(df, self_name=None):
 
 
 def run_full_pipeline(df, weights=None, self_name=None):
-    """
-    Runs the entire scoring pipeline: lane comparison -> z-score scoring
-    (per role) -> leaderboard. Pass self_name (e.g. "PressRtoDragon") to
-    get your own row averaged across all your games, while everyone
-    else stays as individual per-game rows.
-    """
+
     df = add_lane_opponent_comparison(df)
     df = calculate_scores(df, weights=weights)
     leaderboard = build_leaderboard(df, self_name=self_name)
     return df, leaderboard
+"""

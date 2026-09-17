@@ -54,7 +54,6 @@ def pull_all_matches(game_name, tag_line, count=50, save_dir="data"):
         if os.path.exists(file_path):
             print(f"[{i+1}/{len(match_ids)}] {match_id} already saved, skipping.")
             continue
-
         print(f"[{i+1}/{len(match_ids)}] Fetching {match_id}...")
         try:
             match_data = get_match_details(match_id)

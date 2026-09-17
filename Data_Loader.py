@@ -4,10 +4,7 @@ import pandas as pd
 
 
 def load_matches_to_dataframe(data_dir="data"):
-    """
-    Reads every match JSON file in data_dir, flattens each player's stats
-    into one row, and returns a single combined dataframe.
-    """
+
     rows = []
 
     for filename in os.listdir(data_dir):
