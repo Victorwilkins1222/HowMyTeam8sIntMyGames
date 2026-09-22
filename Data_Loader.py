@@ -36,6 +36,6 @@ def load_matches_to_dataframe(data_dir="data"):
                 "cs": participant["totalMinionsKilled"] + participant["neutralMinionsKilled"],
                 "kill_participation": participant["challenges"].get("killParticipation", 0),
             })
-
     df = pd.DataFrame(rows)
+    df['Score'] = 0
     return df
