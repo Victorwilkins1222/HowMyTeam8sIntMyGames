@@ -13,6 +13,6 @@ class stats(Enum):
     assists = 10
     dmgs = 11
     gold = 12
-    vision = 13
+    visions = 13
     cs = 14
     kill_participation = 15
