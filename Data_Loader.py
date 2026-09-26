@@ -1,6 +1,7 @@
 import json
 import os
 import pandas as pd
+from Scoring import *
 
 
 def load_matches_to_dataframe(data_dir="data"):
